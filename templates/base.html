@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>{{ title }}</title>
+  </head>
+  <body style="background: linear-gradient(whitesmoke, white)">
+    <div style="background:#3F51B5">
+        <h1 style="color: whitesmoke; padding-left: 5%">{{ title }}</h1>
+
+    </div>
+    <hr>
+    {% with transactions = get_flashed_messages() %}
+    {% if transactions %}
+    <ul>
+    {% for transaction in transactions %}
+        <li>{{ transaction }} </li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+
+  </body>
+</html>
