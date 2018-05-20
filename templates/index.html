@@ -1,0 +1,89 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+	<br>
+
+    <form action="/submit" method="post" style="margin:0 auto; width: 550px">
+        <label for="from">From:</label>
+        <input type="text" id="from" name="from" placeholder="from">
+        <br>
+        <label for="to">To:</label>
+        <input type="text" id="to" name="to" placeholder="to">
+        <br>
+        <label for="amount">Amount:</label>
+        <input type="text" id="amount" name="amount" placeholder="amount">
+        <br>
+        <br>
+        <input type="submit" class="button" value="Send">
+        <a href="{{node_address}}/mine" target="_blank" class="button">Mine</a>
+    </form>
+	<br>
+
+	<div style="margin: 20px;">
+    <table id="t01">
+        <tr class="post_box">
+                <th>From:</th>
+                <th>To:</th>
+                <th>Amount:</th>
+        </tr>
+    {% for transaction in transactions %}
+        <tr class="post_box">
+            <td>{{ transaction.from }} </td>
+            <td>{{ transaction.to }} </td>
+            <td>{{ transaction.amount }} </td>
+        </tr>
+
+        <br>
+	{% endfor %}
+    </table>
+	<style>
+        * {
+            font-family: Helvetica, sans-serif;
+            font-weight: bold;
+            -webkit-font-smoothing: antialiased;
+        }
+        table#t01 {
+            width: 100%;
+            background-color: #f1f1c1;
+        }
+
+		.post_box {
+		    background: #fff;
+		    padding: 12px 0px 0px 12px;
+		    margin-top: 0px;
+		    margin-bottom: 8px;
+		    border-top: 1px solid #f0f0f0;
+		}
+        .button {
+            margin-top: 35px;
+            background-color: white;
+            border: 1px solid #C5CAE9;
+            line-height: 0;
+            font-size: 17px;
+            display: inline-block;
+            box-sizing: border-box;
+            padding: 20px 15px ;
+            border-radius: 60px;
+            color: #3F51B5;
+            font-weight: 100;
+            letter-spacing: 0.01em;
+            position: relative;
+            z-index: 1;
+        }
+
+        label {
+            width:180px;
+            clear:left;
+            text-align:right;
+            padding-right:10px;
+        }
+
+input, label {
+    float:left;
+}
+
+	</style>
+    </div>
+    <img src="https://i.imgur.com/wb8Z58D.jpg" height="50px" align="right"/>
+{% endblock %}
